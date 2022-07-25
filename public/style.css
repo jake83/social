@@ -3,8 +3,9 @@
       display: none;
     }
 
-    .google.button span {
-        font-size: 85%;
+    .google.button {
+        font-size: 75%;
+        margin: 8px !important;
       }
   }
 
