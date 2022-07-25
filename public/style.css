@@ -13,6 +13,10 @@
       }
   }
 
+.ui.menu {
+  border-radius: 0;
+}
+
   .google.button {
     margin: 2px;
   }
