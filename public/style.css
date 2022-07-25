@@ -7,6 +7,10 @@
         font-size: 75%;
         margin: 8px !important;
       }
+
+      .ui.menu .right.menu .item:before {
+        width: 0px;
+      }
   }
 
   .google.button {
