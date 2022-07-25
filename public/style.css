@@ -1,0 +1,9 @@
+@media only screen and (max-width: 600px) {
+    .menu a span {
+      display: none;
+    }
+  }
+
+  .google.button {
+    margin: 2px;
+  }

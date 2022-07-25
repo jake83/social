@@ -1,27 +1,31 @@
 import React from "react";
 import Link from "./Link";
+import GoogleAuth from "./GoogleAuth";
 
 const Header = () => {
   return (
-    <div className="ui secondary pointing menu">
+    <div className="ui inverted menu">
       <Link href="/" className="item">
         <i className="home icon" />
       </Link>
       <Link href="/youtube" className="item">
         <i className="youtube icon" />
-        YouTube
+        <span>YouTube</span>
       </Link>
       <Link href="/instagram" className="item">
         <i className="instagram icon" />
-        Instagram
+        <span>Instagram</span>
       </Link>
       <Link href="/twitter" className="item">
         <i className="twitter icon" />
-        Twitter
+        <span>Twitter</span>
       </Link>
-      <Link href="/profile" className="item">
-        <i className="user icon" />
-      </Link>
+      <div className="right menu">
+        <Link href="/profile" className="item">
+          <i className="user icon" />
+        </Link>
+        <GoogleAuth />
+      </div>
     </div>
   );
 };
