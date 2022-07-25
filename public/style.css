@@ -2,6 +2,10 @@
     .menu a span {
       display: none;
     }
+
+    .google.button span {
+        font-size: 85%;
+      }
   }
 
   .google.button {
