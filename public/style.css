@@ -11,6 +11,10 @@
       .ui.menu .right.menu .item:before {
         width: 0px;
       }
+
+      .ui.menu .item.logo {
+        display: none;
+      };
   }
 
 .ui.menu {
