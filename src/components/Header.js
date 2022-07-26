@@ -1,10 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import GoogleAuth from "./GoogleAuth";
 
 class Header extends React.Component {
   userName = "jake83"; // Temp!
+
+  socialPlatforms = ["YouTube", "Twitter", "Instagram"];
 
   renderProfileButton = () => {
     if (this.props.isSignedIn !== false) {
@@ -17,23 +20,20 @@ class Header extends React.Component {
   };
 
   renderNavLinks() {
-    if (window.location.pathname !== "/") {
-      return (
-        <>
-          <NavLink to={`/${this.userName}/youtube`} className="item">
-            <i className="youtube icon" />
-            <span>YouTube</span>
+    if (window.location.pathname.startsWith("/" + this.userName)) {
+      return this.socialPlatforms.map((socialPlatform) => {
+        return (
+          <NavLink
+            to={`/${this.userName}/${socialPlatform.toLowerCase()}`}
+            className="item"
+          >
+            <i className={`${socialPlatform.toLowerCase()} icon`} />
+            <span>{socialPlatform}</span>
           </NavLink>
-          <NavLink to={`/${this.userName}/instagram`} className="item">
-            <i className="instagram icon" />
-            <span>Instagram</span>
-          </NavLink>
-          <NavLink to={`/${this.userName}/twitter`} className="item">
-            <i className="twitter icon" />
-            <span>Twitter</span>
-          </NavLink>
-        </>
-      );
+        );
+      });
+    } else {
+      return <Redirect to="/" />;
     }
   }
 
