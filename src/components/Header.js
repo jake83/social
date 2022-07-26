@@ -3,12 +3,13 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import GoogleAuth from "./GoogleAuth";
 
-// TODO: Currently hardcoded to a test account (jake83). Make this dynamic
 class Header extends React.Component {
+  userName = "jake83"; // Temp!
+
   renderProfileButton = () => {
     if (this.props.isSignedIn !== false) {
       return (
-        <NavLink to="/jake83/profile" className="item">
+        <NavLink to={`/${this.userName}/profile`} className="item">
           <i className="user icon" />
         </NavLink>
       );
@@ -19,15 +20,15 @@ class Header extends React.Component {
     if (window.location.pathname !== "/") {
       return (
         <>
-          <NavLink to="/jake83/youtube" className="item">
+          <NavLink to={`/${this.userName}/youtube`} className="item">
             <i className="youtube icon" />
             <span>YouTube</span>
           </NavLink>
-          <NavLink to="/jake83/instagram" className="item">
+          <NavLink to={`/${this.userName}/instagram`} className="item">
             <i className="instagram icon" />
             <span>Instagram</span>
           </NavLink>
-          <NavLink to="/jake83/twitter" className="item">
+          <NavLink to={`/${this.userName}/twitter`} className="item">
             <i className="twitter icon" />
             <span>Twitter</span>
           </NavLink>
