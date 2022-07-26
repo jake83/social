@@ -7,8 +7,6 @@ import GoogleAuth from "./GoogleAuth";
 class Header extends React.Component {
   userName = "jake83"; // Temp!
 
-  socialPlatforms = ["YouTube", "Twitter", "Instagram"];
-
   renderProfileButton = () => {
     if (this.props.isSignedIn !== false) {
       return (
@@ -21,7 +19,7 @@ class Header extends React.Component {
 
   renderNavLinks() {
     if (window.location.pathname.startsWith("/" + this.userName)) {
-      return this.socialPlatforms.map((socialPlatform) => {
+      return ["YouTube", "Twitter", "Instagram"].map((socialPlatform) => {
         return (
           <NavLink
             to={`/${this.userName}/${socialPlatform.toLowerCase()}`}
