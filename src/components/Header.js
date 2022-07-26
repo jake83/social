@@ -33,18 +33,13 @@ class Header extends React.Component {
           </NavLink>
         </>
       );
-    } else {
-      return (
-        <NavLink to="/" exact={true} className="item">
-          <i className="home icon" />
-        </NavLink>
-      );
     }
   }
 
   render() {
     return (
       <div className="ui inverted menu">
+        <span className="item">Social Hub</span>
         {this.renderNavLinks()}
         <div className="right menu">
           {this.renderProfileButton()}
