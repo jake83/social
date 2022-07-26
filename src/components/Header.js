@@ -1,15 +1,43 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import Link from "./Link";
 import GoogleAuth from "./GoogleAuth";
 
+// TODO: Currently hardcoded to a test account (jake83). Make this dynamic
 class Header extends React.Component {
-  renderProfileButton() {
-    if (this.props.isSignedIn) {
+  renderProfileButton = () => {
+    if (this.props.isSignedIn !== false) {
       return (
-        <Link href="/profile" className="item">
+        <NavLink to="/jake83/profile" className="item">
           <i className="user icon" />
-        </Link>
+        </NavLink>
+      );
+    }
+  };
+
+  renderNavLinks() {
+    if (window.location.pathname !== "/") {
+      return (
+        <>
+          <NavLink to="/jake83/youtube" className="item">
+            <i className="youtube icon" />
+            <span>YouTube</span>
+          </NavLink>
+          <NavLink to="/jake83/instagram" className="item">
+            <i className="instagram icon" />
+            <span>Instagram</span>
+          </NavLink>
+          <NavLink to="/jake83/twitter" className="item">
+            <i className="twitter icon" />
+            <span>Twitter</span>
+          </NavLink>
+        </>
+      );
+    } else {
+      return (
+        <NavLink to="/" exact={true} className="item">
+          <i className="home icon" />
+        </NavLink>
       );
     }
   }
@@ -17,21 +45,7 @@ class Header extends React.Component {
   render() {
     return (
       <div className="ui inverted menu">
-        <Link href="/" className="item">
-          <i className="home icon" />
-        </Link>
-        <Link href="/youtube" className="item">
-          <i className="youtube icon" />
-          <span>YouTube</span>
-        </Link>
-        <Link href="/instagram" className="item">
-          <i className="instagram icon" />
-          <span>Instagram</span>
-        </Link>
-        <Link href="/twitter" className="item">
-          <i className="twitter icon" />
-          <span>Twitter</span>
-        </Link>
+        {this.renderNavLinks()}
         <div className="right menu">
           {this.renderProfileButton()}
           <GoogleAuth />
@@ -42,9 +56,7 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    isSignedIn: state.auth.isSignedIn,
-  };
+  return { isSignedIn: state.auth.isSignedIn };
 };
 
 export default connect(mapStateToProps)(Header);
