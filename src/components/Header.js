@@ -2,28 +2,44 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { fetchProfile } from "../actions";
 import GoogleAuth from "./GoogleAuth";
 
 class Header extends React.Component {
-  userName = "jake83"; // Temp!
-
   renderProfileButton = () => {
     if (this.props.isSignedIn !== false) {
       return (
-        <NavLink to={`/${this.userName}/profile`} className="item">
+        <NavLink to={"/profile"} className="item">
           <i className="user icon" />
         </NavLink>
       );
     }
   };
 
+  getUserName = () => {
+    if (window.location.pathname.match("/profile")) {
+      if (this.props.profile) {
+        return this.props.profile.username;
+      }
+    } else {
+      const pathNameShards = window.location.pathname.split("/");
+      if (1 in pathNameShards) {
+        return pathNameShards[1];
+      }
+    }
+    return "";
+  };
+
   renderNavLinks() {
-    if (window.location.pathname.startsWith("/" + this.userName)) {
+    const userName = this.getUserName();
+
+    if (this.props.isSignedIn || userName !== "") {
       return ["YouTube", "Twitter", "Instagram"].map((socialPlatform) => {
         return (
           <NavLink
-            to={`/${this.userName}/${socialPlatform.toLowerCase()}`}
+            to={`/${userName}/${socialPlatform.toLowerCase()}`}
             className="item"
+            key={socialPlatform.toLowerCase()}
           >
             <i className={`${socialPlatform.toLowerCase()} icon`} />
             <span>{socialPlatform}</span>
@@ -50,7 +66,10 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { isSignedIn: state.auth.isSignedIn };
+  return {
+    isSignedIn: state.auth.isSignedIn,
+    profile: state.profiles[state.auth.userId],
+  };
 };
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { fetchProfile })(Header);

@@ -1,12 +1,12 @@
 import React from "react";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import history from "../history";
 import Home from "./sections/Home";
 import YouTube from "./sections/YouTube";
 import Instagram from "./sections/Instagram";
 import Twitter from "./sections/Twitter";
-import Profile from "./sections/Profile";
+import ProfileEdit from "./profiles/ProfileEdit";
 
 const App = () => {
   return (
@@ -19,7 +19,7 @@ const App = () => {
             <Route path="/:username/youtube" exact component={YouTube} />
             <Route path="/:username/instagram" exact component={Instagram} />
             <Route path="/:username/twitter" exact component={Twitter} />
-            <Route path="/:username/profile" exact component={Profile} />
+            <Route path="/profile" exact component={ProfileEdit} />
           </Switch>
         </div>
       </Router>
