@@ -6,7 +6,7 @@ import Home from "./sections/Home";
 import YouTube from "./sections/YouTube";
 import Instagram from "./sections/Instagram";
 import Twitter from "./sections/Twitter";
-import ProfileEdit from "./profiles/ProfileEdit";
+import Profile from "./sections/Profile";
 
 const App = () => {
   return (
@@ -19,7 +19,7 @@ const App = () => {
             <Route path="/:username/youtube" exact component={YouTube} />
             <Route path="/:username/instagram" exact component={Instagram} />
             <Route path="/:username/twitter" exact component={Twitter} />
-            <Route path="/profile" exact component={ProfileEdit} />
+            <Route path="/profile" exact component={Profile} />
           </Switch>
         </div>
       </Router>

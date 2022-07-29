@@ -1,6 +1,12 @@
 import profiles from "../apis/profiles";
-import history from "../history";
-import { SIGN_IN, SIGN_OUT, FETCH_PROFILE, EDIT_PROFILE } from "./types";
+import {
+  SIGN_IN,
+  SIGN_OUT,
+  CREATE_PROFILE,
+  FETCH_PROFILES,
+  FETCH_PROFILE,
+  EDIT_PROFILE,
+} from "./types";
 
 export const signIn = (userId) => {
   return {
@@ -13,6 +19,18 @@ export const signOut = () => {
   return {
     type: SIGN_OUT,
   };
+};
+
+export const createProfile = (id, formValues) => async (dispatch, getState) => {
+  const response = await profiles.post("/profiles", { ...formValues, id });
+
+  dispatch({ type: CREATE_PROFILE, payload: response.data });
+};
+
+export const fetchProfiles = () => async (dispatch) => {
+  const response = await profiles.get("/profiles");
+
+  dispatch({ type: FETCH_PROFILES, payload: response.data });
 };
 
 export const fetchProfile = (id) => async (dispatch) => {

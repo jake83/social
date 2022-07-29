@@ -33,7 +33,7 @@ class Header extends React.Component {
   renderNavLinks() {
     const userName = this.getUserName();
 
-    if (this.props.isSignedIn || userName !== "") {
+    if (userName !== "") {
       return ["YouTube", "Twitter", "Instagram"].map((socialPlatform) => {
         return (
           <NavLink
