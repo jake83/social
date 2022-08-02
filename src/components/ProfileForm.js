@@ -55,7 +55,7 @@ const ProfileForm = (props) => {
           <Field
             name="instagram"
             component={renderInput}
-            label="Instagram user name"
+            label="Instagram access key"
           />
           <Field
             name="twitter"

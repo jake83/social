@@ -5,6 +5,7 @@ import {
   CREATE_PROFILE,
   FETCH_PROFILES,
   FETCH_PROFILE,
+  FETCH_PROFILE_BY_USERNAME,
   EDIT_PROFILE,
 } from "./types";
 
@@ -37,6 +38,12 @@ export const fetchProfile = (id) => async (dispatch) => {
   const response = await profiles.get(`/profiles/${id}`);
 
   dispatch({ type: FETCH_PROFILE, payload: response.data });
+};
+
+export const fetchProfileByUsername = (username) => async (dispatch) => {
+  const response = await profiles.get(`/profiles?username=${username}`);
+
+  dispatch({ type: FETCH_PROFILE_BY_USERNAME, payload: response.data[0] });
 };
 
 export const editProfile = (id, formValues) => async (dispatch) => {

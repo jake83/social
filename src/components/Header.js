@@ -54,7 +54,9 @@ class Header extends React.Component {
   render() {
     return (
       <div className="ui inverted menu">
-        <span className="item logo">Social Hub</span>
+        <NavLink to="/" className="item" key="home">
+          Social Hub
+        </NavLink>
         {this.renderNavLinks()}
         <div className="right menu">
           {this.renderProfileButton()}
