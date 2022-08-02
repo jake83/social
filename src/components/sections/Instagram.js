@@ -13,6 +13,7 @@ class Instagram extends React.Component {
     if (!this.props.profile) {
       return <div>Loading...</div>;
     } else {
+      console.log(this.props.profile.instagram);
       return (
         <InstagramFeed token={this.props.profile.instagram} counter="12" />
       );
