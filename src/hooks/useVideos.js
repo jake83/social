@@ -3,7 +3,7 @@ import youtube from "../apis/youtube";
 
 const useVideos = (defaultSearchTerm) => {
   const [videos, setVideos] = useState([]);
-  const channelId = "UC8h8NJG9gacZ5lAJJvhD0fQ";
+  const channelId = "UCKpp8KMWBgDvUIOfO9-6dMg";
 
   useEffect(() => {
     search(defaultSearchTerm);
