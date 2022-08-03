@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import youtube from "../apis/youtube";
 
-const useVideos = (defaultSearchTerm) => {
+const useVideos = () => {
   const [videos, setVideos] = useState([]);
   const channelId = "UCKpp8KMWBgDvUIOfO9-6dMg";
 
   useEffect(() => {
-    search(defaultSearchTerm);
-  }, [defaultSearchTerm]);
+    search();
+  }, []);
 
-  const search = async (term) => {
+  const search = async () => {
     const response = await youtube.get("/search", {
       params: {
         channelId: channelId,
